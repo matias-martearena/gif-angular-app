@@ -16,8 +16,12 @@ export class GifListComponent {
   }
 
   searchGifs(query: string): void {
-    this.apiGifService.searchGifs(query).subscribe(response => {
-      this.gifs = response.data
-    })
+    if (query || query.trim()) {
+      this.apiGifService.searchGifs(query).subscribe(response => {
+        this.gifs = response.data
+      })
+    } else {
+      this.gifs = []
+    }
   }
 }

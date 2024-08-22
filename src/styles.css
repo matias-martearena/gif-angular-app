@@ -1,64 +1,10 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+@tailwind components;
+@tailwind utilities;
+@tailwind base;
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
-ul[role='list'],
-ol[role='list'] {
-  list-style: none;
-}
-
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
-
-img,
-picture,
-svg,
-video,
-canvas {
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
-  font-style: italic;
+body {
+  background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
   background-repeat: no-repeat;
-  background-size: cover;
-}
-
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    transition: none;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-body,
-html {
-  height: 100%;
-  scroll-behavior: smooth;
+  background-size: contain;
+  height: 100vh;
 }

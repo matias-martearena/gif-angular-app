@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, OnInit, Output, EventEmitter } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
 
 @Component({
@@ -6,16 +6,20 @@ import { FormControl, FormGroup } from '@angular/forms'
   templateUrl: './search-gif-form.component.html',
   styleUrl: './search-gif-form.component.css'
 })
-export class SearchGifFormComponent {
-  gifForm: FormGroup = new FormGroup({})
+export class SearchGifFormComponent implements OnInit {
+  @Output() search = new EventEmitter<string>()
 
-  constructor() {
-    this.gifForm = new FormGroup({
-      name: new FormControl('')
+  gifForm: FormGroup = new FormGroup({
+    name: new FormControl('')
+  })
+
+  ngOnInit(): void {
+    this.gifForm.get('name')?.valueChanges.subscribe(value => {
+      this.search.emit(value)
     })
   }
 
-  onSearch() {
-    console.log(this.gifForm.get('name')?.value)
+  onSearch(): void {
+    this.search.emit(this.gifForm.get('name')?.value)
   }
 }
