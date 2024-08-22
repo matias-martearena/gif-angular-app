@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 import { enviroments } from '../../../environments/environments.dev'
 
+@Injectable({
+  providedIn: 'root'
+})
 export class ApiGifService {
   private apiKey: string = 'XhOalgqrwJAf8QaOxGbMvKPL0eH17GDI'
   private apiUrl: string = enviroments.apiUrl
