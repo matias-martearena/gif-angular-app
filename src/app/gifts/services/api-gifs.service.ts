@@ -7,7 +7,7 @@ import { enviroments } from '../../../environments/environments.dev'
   providedIn: 'root'
 })
 export class ApiGifService {
-  private apiKey: string = 'mHwfRt9QHC1k0kPBUntfjHlvmSEQG0C1'
+  private apiKey: string = 'W5IQyh4UHqm9Fs3xq64bWlt0oHzxqRAq'
   private apiUrl: string = enviroments.apiUrl
 
   constructor(private http: HttpClient) {}

@@ -17,7 +17,7 @@ export class GifListComponent {
 
   searchGifs(query: string): void {
     if (query.length === 0) {
-      query = 'Messi'
+      query = 'random'
     }
     if (query || query.trim()) {
       this.apiGifService.searchGifs(query).subscribe(response => {
