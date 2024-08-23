@@ -3,8 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms'
 
 @Component({
   selector: 'app-search-gif-form',
-  templateUrl: './search-gif-form.component.html',
-  styleUrl: './search-gif-form.component.css'
+  templateUrl: './search-gif-form.component.html'
 })
 export class SearchGifFormComponent implements OnInit {
   @Output() search = new EventEmitter<string>()
