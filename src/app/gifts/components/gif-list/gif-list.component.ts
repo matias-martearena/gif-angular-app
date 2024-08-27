@@ -3,28 +3,28 @@ import { Component, Input } from '@angular/core'
 import { ApiGifService } from '../../services/api-gifs.service'
 
 @Component({
-  selector: 'app-gif-list',
-  templateUrl: './gif-list.component.html'
+    selector: 'app-gif-list',
+    templateUrl: './gif-list.component.html',
 })
 export class GifListComponent {
-  gifs: any[] = []
+    gifs: any[] = []
 
-  @Input() set searchTerm(query: string) {
-    this.searchGifs(query)
-  }
-
-  constructor(private apiGifService: ApiGifService) {}
-
-  searchGifs(query: string): void {
-    if (query.length === 0) {
-      query = 'random'
+    @Input() set searchTerm(query: string) {
+        this.searchGifs(query)
     }
-    if (query || query.trim()) {
-      this.apiGifService.searchGifs(query).subscribe(response => {
-        this.gifs = response.data
-      })
-    } else {
-      this.gifs = []
+
+    constructor(private apiGifService: ApiGifService) {}
+
+    searchGifs(query: string): void {
+        if (query.length === 0) {
+            query = 'random'
+        }
+        if (query || query.trim()) {
+            this.apiGifService.searchGifs(query).subscribe(response => {
+                this.gifs = response.data
+            })
+        } else {
+            this.gifs = []
+        }
     }
-  }
 }

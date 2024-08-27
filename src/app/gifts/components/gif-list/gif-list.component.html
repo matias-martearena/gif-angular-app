@@ -1,13 +1,18 @@
 <section class="flex items-center gap-4 w-full">
-  @if (gifs.length > 0) {
-  <div class="flex flex-wrap gap-4 pt-4 pr-4">
-    @for (gif of gifs; track $index) {
-    <div class="flex justify-center items-center">
-      <img class="block w-full h-auto" [src]="gif.images.fixed_width.url" alt="{{ gif.title }}" />
+    @if (gifs.length > 0) {
+    <div class="flex flex-wrap gap-4 pt-4 pr-4">
+        @for (gif of gifs; track $index) {
+        <div class="flex justify-center items-center">
+            <img
+                class="block w-full h-auto"
+                [src]="gif.images.fixed_width.url"
+                [alt]="gif.title" />
+        </div>
+        }
     </div>
+    } @else {
+    <p class="pt-4 text-lg text-[#25120e]">
+        You haven't searched for a gif yet
+    </p>
     }
-  </div>
-  } @else {
-  <p class="pt-4 text-lg text-[#25120e]">You haven't searched for a gif yet</p>
-  }
 </section>
