@@ -1,19 +1,26 @@
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
+
+import { SearchResponse } from '../interfaces/gifs.interfaces'
 import { enviroments } from '../../../environments/environments.dev'
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class ApiGifService {
-  private apiKey: string = 'W5IQyh4UHqm9Fs3xq64bWlt0oHzxqRAq'
-  private apiUrl: string = enviroments.apiUrl
+    private apiKey: string = 'W5IQyh4UHqm9Fs3xq64bWlt0oHzxqRAq'
+    private apiUrl: string = enviroments.apiUrl
 
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {}
 
-  searchGifs(query: string): Observable<any> {
-    const url = `${this.apiUrl}?api_key=${this.apiKey}&q=${query}&limit=10&offset=0&rating=g&lang=es&bundle=messaging_non_clips`
-    return this.http.get<any>(url)
-  }
+    searchGifs(query: string): Observable<SearchResponse> {
+        const params = new HttpParams()
+            .set('api_key', this.apiKey)
+            .set('q', query)
+            .set('limit', '10')
+            .set('offset', 0)
+            .set('rating', 'g')
+        return this.http.get<SearchResponse>(`${this.apiUrl}?${params}`)
+    }
 }
