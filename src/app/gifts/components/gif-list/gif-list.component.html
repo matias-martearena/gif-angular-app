@@ -2,7 +2,7 @@
     @if (gifs.length > 0) {
     <div class="flex flex-wrap gap-4 pt-4 pr-4">
         @for (gif of gifs; track $index) {
-        <div class="flex justify-center items-center">
+            <div class="flex justify-center items-center p-1 border-4 border-transparent transition-transform transform hover:scale-105 hover:border-blue-500">
             <img
                 class="block w-full h-auto"
                 [src]="gif.images.fixed_width.url"
